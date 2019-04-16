@@ -1,3 +1,5 @@
 class ScheduleSerializer < ActiveModel::Serializer
-  attributes :id
+  attributes :id, :appointments
+
+  has_many :appointments
 end
