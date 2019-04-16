@@ -14,7 +14,6 @@ class SchedulesController < ApplicationController
     schedule = Event.new(schedule_params)
     schedules = Schedule.all
     render json: schedules
-    end
   end
 
   private
