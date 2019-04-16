@@ -11,7 +11,13 @@ class SchedulesController < ApplicationController
   end
 
   def create
-    schedule = Event.new(schedule_params)
+    schedule = Schedule.new(schedule_params)
+    schedules = Schedule.all
+    render json: schedules
+  end
+
+  def destroy
+    Schedule.find(params[:id]).destroy 
     schedules = Schedule.all
     render json: schedules
   end
@@ -19,6 +25,6 @@ class SchedulesController < ApplicationController
   private
 
     def schedule_params
-      params.permit(:id)
+      params.permit(:id, :appointments [])
     end
 end
