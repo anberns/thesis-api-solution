@@ -6,18 +6,17 @@ class AppointmentsController < ApplicationController
   end
 
   def create
-    schedule = Schedule.find(params[:id])
-    respond(ResponseCode::OK)
+    appointment = Appointment.create(appointment_params)
+    appointment.schedule_id = params[:id]
   end
 
   def destroy
     Appointment.find(params[:id]).destroy 
-    respond(ResponseCode::OK)
   end
 
   private 
     def appointment_params
-      params.permit(:id, :appointments [])
+      params.permit(:schedule_id, :start_time, :end_time)
     end
 end
 
